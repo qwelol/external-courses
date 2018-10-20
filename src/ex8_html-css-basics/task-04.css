@@ -1,0 +1,22 @@
+div{
+	padding: 10px;
+	margin:10px;	
+	width:90%;
+}
+#div1{
+	background-color:green;
+	font-family: 'Lobster', cursive;
+	font-size: 25px;
+}
+#div2{
+	background-color:#FF0000;
+    font-family: 'Roboto';
+    font-size: 15pt;
+    font-weight: 600;
+}
+#div5{
+	background-image:url(https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-thumb-c5433193.jpg);
+	background-size:100%;
+	width: auto;
+    font-size: 1.2em;
+}
