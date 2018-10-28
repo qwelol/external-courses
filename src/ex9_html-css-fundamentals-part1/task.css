@@ -21,19 +21,21 @@ input, textarea {
  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
  margin:0;
  padding: 5px;
- width:25%;
+ width:20%;
 }
 textarea
 {
  height:80px;;
  resize: none;
- width:30%;
+ width:25%;
 }
 button{
+ margin: 5px 0 0 62px;
  padding: 7px 32px;
- font-weight: 600;
  border: 1px solid grey;
  border-radius: 5px;
+ background:#f0f0f0;
+ font-weight: bolder;
 }
 input::-webkit-input-placeholder{
  opacity: 0.3;
@@ -54,4 +56,25 @@ label{
 span{
  display:inline-block;
  width:100px;
+}
+.arrow-left {
+  vertical-align:middle;
+  width: 0; 
+  height: 0; 
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent; 
+  border-right:5px solid #d45252; 
+}
+.message{
+ vertical-align:middle;
+ margin: 0;
+ background:#d45252;
+ padding: 5px 13px;
+ color:white;
+ opacity: 1;
+ font-size: 15px;
+}
+.connector{
+ display:inline; 
+ margin:0 0 0 8%
 }
