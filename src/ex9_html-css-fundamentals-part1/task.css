@@ -57,24 +57,24 @@ span{
  display:inline-block;
  width:100px;
 }
-.arrow-left {
-  vertical-align:middle;
-  width: 0; 
-  height: 0; 
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent; 
-  border-right:5px solid #d45252; 
-}
 .message{
  vertical-align:middle;
- margin: 0;
+ margin:0 0 0 8%;
  background:#d45252;
  padding: 5px 13px;
  color:white;
  opacity: 1;
  font-size: 15px;
 }
-.connector{
- display:inline; 
- margin:0 0 0 8%
+.message::after{
+ content: '';
+ display:inline-block;
+ vertical-align:middle;
+ position:relative;
+ left: -108px;
+ width: 0; 
+ height: 0; 
+ border-top: 5px solid transparent;
+ border-bottom: 5px solid transparent; 
+ border-right:5px solid #d45252;
 }
