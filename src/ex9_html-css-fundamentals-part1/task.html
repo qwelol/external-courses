@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="task.css" />
+  <title>Задание из презентации</title>
+ </head>
+ <body>
+  <h1>Form here</h1>
+  <p id="hint"> * required fieds </p>
+  <hr>
+  <form action="#" method="post">
+   <fieldset>
+    <label>
+	 <span>Name:</span> 
+     <input type="text" name="username" placeholder="placeholder text">
+	</label>
+    <label> 
+	 <span> Email: </span>
+     <input type="email" name="email-address" placeholder="placeholder text" required>
+	 <span class="message">Form field hint</span>
+	</label>
+    <label> 
+	 <span>Website:</span>
+     <input type="url" name="website" placeholder="placeholder text" required>
+	 <span class="message">Form field hint</span>	 
+	</label>
+    <label> 
+	 <span id="message">Message:</span>
+     <textarea name="comment"></textarea>
+	</label> 
+    <button name="submit">
+     Submit
+    </button>
+   </fieldset>
+</form>
+ </body>
+</html>

@@ -1,0 +1,28 @@
+table{
+ margin:5% auto;
+ border-collapse: collapse;
+}
+td{
+ width:100px;
+ height:100px;
+ border: 1px solid black;
+ text-align:center;
+}
+input[type="checkbox"]{
+ display:none;
+}
+span {
+ display: block;
+ position: relative;
+ width: 100px;
+ height: 100px;
+ cursor: pointer;
+}
+input:checked+span::after {
+ content: "♘";
+ text-align: center;
+ position:relative;
+ 
+ font-size: 70px;
+ color: red;
+}

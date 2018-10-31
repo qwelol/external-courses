@@ -1,0 +1,38 @@
+div{
+ width: 200px;
+ margin:auto;
+ border:2px solid black;
+ border-radius: 15px;
+ padding:2px;
+}
+button{
+ width: 200px;	
+ display:block;
+ border:0; 
+ border-radius: 10px;
+ padding:5px;
+ background:#dfdfdf;
+}
+#case{
+ display:inline-block;
+ border:1px solid black;
+ border-radius: 10px;
+ padding: 2px;
+ width: 185px;
+ height: 40px;
+ background: linear-gradient(0deg, #9e9e9e, #f1f1f1);	
+ color:#555555;
+}
+#text{
+ position:relative;
+ top:5%;
+ font-size: 20px;
+ letter-spacing: -0.9px;
+ font-weight: 600;
+ text-transform: uppercase;
+ color: #555555; 
+}
+.star{
+ font-size:21px;
+ color:#888888;
+}
