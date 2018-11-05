@@ -1,0 +1,10 @@
+img {
+ width:300px;
+ height:300px;
+ clip-path:circle(50%); 
+}
+img:hover{
+ -webkit-mask-size:300px;
+ -webkit-mask-image: url(http://iamvdo.me/conf/2012/kiwiparty/img/masque2.png);
+
+}
