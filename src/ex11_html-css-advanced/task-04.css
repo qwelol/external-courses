@@ -18,11 +18,16 @@ a, a:visited{
  text-decoration:none;
  color:inherit;
 }
+.header{
+ position: fixed;
+ width: 100%;
+}
 .panel{
  border-radius: 5px 5px 0 0;
  background-color: #2f364a;
  width: 100%;
  height: 5%;
+ max-height: 56px;
 }
 .header-menu{
  width:100%;
@@ -84,13 +89,15 @@ a, a:visited{
 .main-page{
  display: flex;
  width: 100%;
+ position: fixed;
+ top:55.5px;
+ bottom: 43px;
 }
 .sidebar{
  display: flex;
  flex-direction: column;
- max-width: 300px;
- width: 20%;
- max-height: 900px;
+ max-width: 250px;
+ min-width: 220px;
  overflow: auto;
  background-color: #1f2637;
 }
@@ -99,6 +106,7 @@ a, a:visited{
  justify-content: center;
  align-items: center;
  min-width: 200px;
+ min-height: 100px;
  height: 150px;
  background-color: #1f2637;
 }
@@ -106,7 +114,6 @@ a, a:visited{
  display: flex;
  justify-content: center;
  align-items: center;
- width: 100%;
  height: 44px;
  padding: 20px;
  margin:0 25px;
@@ -134,11 +141,15 @@ a, a:visited{
 }
 .divider{
  min-width: 200px;
- height: 6px;
+ min-height: 6px;
  background-color: rgba(24,30,44,0.8);
 }
 .main-nav{
  background-color: #1f2637;
+}
+.nav-menu{
+ max-height: 216px;
+ max-width: 300px;
 }
 .nav-menu .menu-item{
  display: block;
@@ -207,10 +218,13 @@ a, a:visited{
  font-weight: 300;
 }
 main{
- width: 80%;
+ width: 100%;
 }
-footer{
- max-height: 4%;
+.page-footer{
+ max-height: 46px;
+ position: fixed;
+ bottom: 0;
+ width: 100%;
 }
 .footer-panel{
  display:flex;
