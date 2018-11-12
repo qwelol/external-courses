@@ -139,8 +139,9 @@ a, a:visited{
 .add-book-panel a:hover{
  background-color: #ffa98c;
 }
-.divider{
- min-width: 200px;
+hr{
+ border: 0;
+ width: 100%;
  min-height: 6px;
  background-color: rgba(24,30,44,0.8);
 }
