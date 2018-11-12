@@ -3,6 +3,7 @@
 }
 body{
  background-color:white;
+ overflow-x:hidden;
  margin: 0;
 }
 ul{
@@ -359,6 +360,7 @@ h1{
  align-items: flex-start;
  flex-basis:521px;
  text-align: justify;
+ min-width: 400px;
 }
 h2{
  font-size: 26px;
@@ -438,16 +440,60 @@ main{
  .main-header{
   padding-bottom: 0;
  }
+ h1 {
+  font-size: 48px;
+ }
+ .header-signature {
+  font-size: 40px;
+  left: 75px;
+  letter-spacing: -2px;
+ }
+ .header-signature::before{
+  font-size: 80px;
+  top: -20px;
+  left: -70px;
+ }
  .text-container{
   flex-direction: column;
-  margin: 318px 212px 0 212px;
+  margin: 318px 100px 0;
   padding: 0;
+  min-width: 400px;
  }
  .about-text, .why-text {
   flex-basis: auto;
  }
+ h2{
+  font-size: 22px;
+ }
  .about-text p, .why-text p{
   overflow: hidden;
+  line-height: 17px;
   max-height: 70px;
+ }
+}
+@media (max-width: 700px) {
+ h1 {
+  font-size: 34px;
+ }
+ .header-signature {
+  font-size: 24px;
+  left: 10px;
+  top: -50px;
+ }
+ .header-signature::before{
+  font-size: 55px;
+  left: -45px;
+  top: -15px;
+ }
+ .text-container{
+  margin: 318px 100px 0;
+ }
+ h2{
+  font-size: 15px;
+  line-height: 15px;
+ }
+ .why-text p, .about-text p{
+  font-size: 10px;
+  line-height: 14px;
  }
 }
