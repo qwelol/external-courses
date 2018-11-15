@@ -1,0 +1,144 @@
+* {
+ box-sizing: border-box;
+}
+.loader{
+ position:relative;
+ margin:50px auto 0;
+ width:50px;
+ height:50px;
+ border: 5px solid gray;
+ border-top:5px solid black;
+ border-radius:50%; 
+ animation: spin 2s linear infinite;
+}
+@keyframes spin{
+ 0%{
+  transform:rotateZ(0deg);	 
+ }	
+ 100%{
+  transform: rotateZ(360deg);	 
+ }
+}
+.text{
+ text-align:center;
+ margin-top:10px;
+ text-align:center; 
+}
+.text::after{
+ content:'...';	
+ animation: points 2s linear infinite;
+}
+@keyframes points {
+	0%{
+	 content:'.';
+	}
+	50%{
+	 content:'..';
+	}
+	100%{
+	 content:'...';
+	}
+}
+.block1{
+ margin: 50px auto 200px;	
+}
+.block2{
+ margin: 0 auto 50px;	
+}
+.block1, .block2 {
+ width:50%;
+ height:25px;
+ background-color:black;
+}
+.ball{
+ position:absolute;
+ top:353.5px;
+ left:calc(50% - 25px);
+ width:50px;
+ height:50px;
+ background-color:red;
+ border-radius:50%;
+ animation: jump 6s linear infinite;
+}
+@keyframes jump{
+ 0%{
+  top:353.5px; 
+ }
+ 25%{
+  top:278.5px;	 
+ } 
+ 50%{
+  top:203.5px;	 
+ }
+ 75%{
+  top:278.5px;	 
+ } 
+ 100%{
+  top:353.5px;	 
+ }
+}
+.inf-animate{
+ width:100px;
+ height:100px;
+ border-radius:50%;
+ margin:auto;
+ background: gold;
+ box-shadow: 0 -200px 100px -120px crimson inset;
+ animation: trans 30s linear infinite; 
+}
+@keyframes trans{
+ 0%{
+  border-radius:50%;
+  background: gold;
+  box-shadow: 0 -200px 100px -120px crimson inset;
+  transform:skewY(0deg) scale(1,1) rotate(0deg);
+ }	
+ 12.5%{
+  border-radius:0%;
+  background: gold;
+  box-shadow: 0 -200px 100px -120px crimson inset;
+  transform:skewY(0deg) scale(1,1) rotate(0deg);
+ }
+ 25%{
+  border-radius:0%;	 
+  background: skyblue;
+  box-shadow: 0 -200px 100px -100px yellowgreen inset;
+  transform:skewY(0deg) scale(1,1) rotate(0deg);
+ }
+ 37.5%{
+  border-radius:0%;	  
+  background: skyblue;
+  box-shadow: 0 -200px 100px -100px yellowgreen inset;	 
+  transform:skewY(7deg) scale(0.7,0.7) rotate(0deg); 
+ }
+ 50%{
+  border-radius:0%;	 
+  background: skyblue;
+  box-shadow: 0 -200px 100px -100px yellowgreen inset;	 
+  transform:skewY(7deg) scale(0.7,0.7) rotate(0deg);	 
+ }
+ 62.5%{
+  border-radius:0%;	 
+  background: skyblue;
+  box-shadow: 0 -200px 100px -100px yellowgreen inset; 
+  transform:skewY(7deg) scale(0.7,0.7) rotate(180deg);	 
+ }
+ 75%{
+  border-radius:0%;	 
+  background: gold;
+  box-shadow: 0 -200px 100px -120px crimson inset;
+  transform:skewY(7deg) scale(0.7,0.7) rotate(180deg);		 
+ }
+  87.5%{
+  border-radius:50%;	 
+  background: gold;
+  box-shadow: 0 -200px 100px -120px crimson inset;
+  transform:skewY(7deg) scale(0.7,0.7) rotate(180deg);		 
+ }
+ 100%{
+  border-radius:50%;	 
+  background: gold;
+  box-shadow: 0 -200px 100px -120px crimson inset;
+  transform:skewY(0deg) scale(1,1) rotate(0deg);
+ }
+}
