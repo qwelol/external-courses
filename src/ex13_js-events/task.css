@@ -37,3 +37,9 @@
 .open{
  display: block;
 }
+.accordion-header.open{
+ background-color: #f5f5f5;
+}
+.accordion-header.open:after{
+ content:'\2212';
+}
