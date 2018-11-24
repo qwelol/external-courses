@@ -1,36 +1,31 @@
-var openedDiv;
+var openedItem;
 var accordion=document.getElementsByClassName('accordion');
-accordion[0].onclick = function (event) {
+accordion[0].onclick = function (event) 
+{
     var target = event.target;
-    if (target.tagName === 'DIV'){
+    if (target.tagName === 'DIV')
+	{
         open(target);
     }
-    else{
-     return;   
+    else
+	{
+		return;   
 	}
 }
-function open(node) {
-    console.log(openedDiv);
-    if(openedDiv!==node)
+function open(node) 
+{
+    if(openedItem !== node.parentNode)
 	{
-		if (openedDiv){
-		 for(var i=0; i<openedDiv.parentNode.children.length; i++)
-		 {
-		  openedDiv.parentNode.children[i].classList.remove('open');
-		 }
-		}
-		openedDiv=node;
-		for(i=0; i<openedDiv.parentNode.children.length; i++)
+		if (openedItem)
 		{
-		 openedDiv.parentNode.children[i].classList.add('open');
+			openedItem.classList.remove('open');
 		}
+		openedItem=node.parentNode;
+		openedItem.classList.add('open');
 	}
 	else
 	{
-	 for(i=0; i<openedDiv.parentNode.children.length; i++)
-	 {
-	  openedDiv.parentNode.children[i].classList.remove('open');
-	 }
-	 openedDiv=undefined;
+		openedItem.classList.remove('open');
+		openedItem=undefined;
 	}
 }
