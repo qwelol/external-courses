@@ -1,6 +1,18 @@
 var tags={};
 var classes={};
 text=0;
+function increaseCounter(store, key) 
+{
+ var storage=store;
+ if (key in storage)
+ {
+  storage[key]++;	
+ }
+ else
+ {
+  storage[key]=1;	
+ }
+}
 function scanDOM(elem)
 {
  for (var i = 0; i < elem.childNodes.length; i++) 
@@ -9,23 +21,9 @@ function scanDOM(elem)
   {
 	for (var j=0; j<elem.childNodes[i].classList.length; j++)
 	{
-	 if (elem.childNodes[i].classList[j] in classes)
-	 {
-	  classes[elem.childNodes[i].classList[j]]++;	
-	 }
-	 else
-	 {
-  	  classes[elem.childNodes[i].classList[j]]=1;	
-     }
+	 increaseCounter(classes, elem.childNodes[i].classList[j]);
 	}
-	if (elem.childNodes[i].localName in tags)
-	{
-	 tags[elem.childNodes[i].localName]++;	
-	}
-	else
-	{
-	 tags[elem.childNodes[i].localName]=1;
-	}
+	increaseCounter(tags, elem.childNodes[i].localName);
 	if (elem.childNodes[i].hasChildNodes())
 	{
 	 scanDOM(elem.childNodes[i]);
