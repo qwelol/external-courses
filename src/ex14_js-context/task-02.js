@@ -1,10 +1,6 @@
 'use strict'
 function Hangman(secretWord)
 {
- this.secretWord = secretWord;
- this.errorsLeft = 6;
- this.wrongSymbols = [];
- this.guessedString = "_".repeat(this.secretWord.length);
  this.guess = function(letter)
  {
 	var lowLetter = letter.toLowerCase();
@@ -28,7 +24,7 @@ function Hangman(secretWord)
 			console.log(this.guessedString);
 		}
 	}
-    else
+	else
 	{
 		if (this.wrongSymbols.join('').indexOf(lowLetter) === -1)
 		{
@@ -46,33 +42,34 @@ function Hangman(secretWord)
 			' | ' + this.wrongSymbols.join(','));
 		}
 	}		
-    return this; 
+	return this; 
  };
  this.getGuessedString = function()
  {
-    return this.guessedString; 
+	return this.guessedString; 
  };
  this.getErrorsLeft = function()
  {
-    return this.errorsLeft; 
+	return this.errorsLeft; 
  };
  this.getWrongSymbols = function()
  {
-    return this.wrongSymbols; 
+	return this.wrongSymbols; 
  };
  this.getStatus = function()
  {
 	console.log(this.guessedString + ' | ' + 'errors left ' + this.errorsLeft); 
-    return this; 
+	return this; 
  };
  this.startAgain = function(newSecret)
  {
-    this.secretWord = newSecret.toLowerCase();
-    this.errorsLeft = 6;
-    this.wrongSymbols = [];
-    this.guessedString = "_".repeat(this.secretWord.length);
-    return this;	
- }; 
+	this.secretWord = newSecret.toLowerCase();
+	this.errorsLeft = 6;
+	this.wrongSymbols = [];
+	this.guessedString = "_".repeat(this.secretWord.length);
+	return this;	
+ };
+ this.startAgain(secretWord); 
 };
 var hangman = new Hangman('webpurple');
 module.exports = hangman;
