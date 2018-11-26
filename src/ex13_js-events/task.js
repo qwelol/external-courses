@@ -1,31 +1,21 @@
-var openedItem;
 var accordion=document.getElementsByClassName('accordion');
 accordion[0].onclick = function (event) 
 {
-    var target = event.target;
-    if (target.tagName === 'DIV')
-	{
-        open(target);
-    }
-    else
-	{
-		return;   
-	}
-}
-function open(node) 
-{
-    if(openedItem !== node.parentNode)
+	var target = event.target;
+	var openedItem=accordion[0].querySelector('.open');
+	if (target.tagName === 'DIV')
 	{
 		if (openedItem)
 		{
 			openedItem.classList.remove('open');
+		}	
+		if (openedItem !== target.parentNode)
+		{
+			target.parentNode.classList.add('open');
 		}
-		openedItem=node.parentNode;
-		openedItem.classList.add('open');
 	}
 	else
 	{
-		openedItem.classList.remove('open');
-		openedItem=undefined;
+		return;   
 	}
 }
