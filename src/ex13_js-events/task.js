@@ -11,7 +11,7 @@ accordion[0].onclick = function (event)
 		}	
 		if (openedItem !== target.parentNode)
 		{
-			target.parentNode.classList.add('open');
+			target.closest('li').classList.add('open');
 		}
 	}
 	else
