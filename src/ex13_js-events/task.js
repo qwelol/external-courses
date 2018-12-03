@@ -9,7 +9,7 @@ accordion[0].onclick = function (event)
 		{
 			openedItem.classList.remove('open');
 		}	
-		if (openedItem !== target.parentNode)
+		if (openedItem !== target.closest('li'))
 		{
 			target.closest('li').classList.add('open');
 		}
