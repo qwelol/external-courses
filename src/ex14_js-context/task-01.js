@@ -1,13 +1,13 @@
 'use strict'
 var Calculator=(function()
 {
- var num1=0;
  return{
+	num1:0,
 	add: function add(num2)
 	{
 		if (!isNaN(num2))
 		{
-			num1+=num2;
+			this.num1+=num2;
 		}
 		return this;
 	},
@@ -15,7 +15,7 @@ var Calculator=(function()
 	{   
 		if (!isNaN(num2))
 		{
-			num1-=num2; 
+			this.num1-=num2; 
 		}
 		return this;
 	},
@@ -23,7 +23,7 @@ var Calculator=(function()
 	{
 		if (!isNaN(num2))
 		{
-			num1/=num2; 
+			this.num1/=num2; 
 		}
 		return this; 
 	},
@@ -31,30 +31,30 @@ var Calculator=(function()
 	{
 		if (!isNaN(num2))
 		{
-			num1*=num2;
+			this.num1*=num2;
 		}
 		return this;
 	},
 	getResult: function getResult()
 	{
-		return num1;
+		return this.num1;
 	},
 	reset: function reset()
 	{
-		num1=0; 
+		this.num1=0; 
 		return this;
 	},
 	setState: function setState(val)
 	{
 		if (!isNaN (val))
 		{			
-			num1=+val;
+			this.num1=+val;
 		}		
 		return this;
 	},
 	fetchData: function fetchData(callback)
 	{
-		num1=500;	 
+		this.num1=500;	 
 		callback(this.getResult());	  
 		return this;	
 	} 	 
