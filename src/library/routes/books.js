@@ -10,8 +10,43 @@ const BOOKS = [
     { id: 6, title: 'Height3', src: 'img/book-cover.png', author: 'Del', description: 'Any story', keywords:'height', rating:5, price:0,created_at:new Date(2013,1,1)}
 ];
 
-router.get('/', (_, res) => {
-    res.json({ payload: BOOKS });
+router.get('/', (req, res) => {
+    const { query } = req; // /api/books?filter=<smthing>
+    const { filter, match } = query;
+    if (filter) {
+        switch (filter) {
+            case 'popular':{
+                return res.json({payload: BOOKS.filter(function (book) {
+                        return book.rating >=4;
+                    })})
+            }
+            case 'most-recent':{
+                return res.json({payload: BOOKS.filter(function (book) {
+                        return book.created_at.getFullYear() === new Date().getFullYear();
+                    })})
+            }
+            case 'free':{
+                return res.json({payload: BOOKS.filter(function (book) {
+                        return book.price === 0;
+                    })})
+            }
+            default: {
+                break;
+            }
+        }
+    }
+    if (match) {
+        // title
+        // author
+        // description
+       return res.json({payload: BOOKS.filter(function (book) {
+               return book.author.toLowerCase().includes(match.toLowerCase())
+                   || book.title.toLowerCase().includes(match.toLowerCase())
+                   || book.description.toLowerCase().includes(match.toLowerCase());
+           })});
+    }
+
+    return res.json({ payload: BOOKS });
 });
 
 router.get('/:id', (req, res) => {

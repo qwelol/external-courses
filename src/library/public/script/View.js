@@ -3,7 +3,13 @@ function View(model, controller) {
     this.model = model;
     this.ctrl = controller;
     this.div = document.getElementById('books');
-    this.filters = document.querySelectorAll('.filter span');
+    this.all = document.getElementById('all-books');
+    this.recent = document.getElementById('most-recent');
+    this.popular = document.getElementById('popular');
+    this.free = document.getElementById('free');
+    this.search = document.getElementById('search');
+    this.addBook = document.getElementById('add-book-btn');
+    this.cancel = document.getElementById('cancel');
 }
 
 View.prototype.init = function () {
@@ -12,70 +18,64 @@ View.prototype.init = function () {
     this.model.onBooksLoaded.subscribe((books) => {
         this.renderBooks(books);
     });
-    for (var i=0;i<this.filters.length;i++){
-        this.filters[i].addEventListener('click', function () {
-                that.renderCategories(that.model.books);
-            });
-    }
+    this.all.addEventListener('click', () => {
+        this.model.loadBooks();
+    });
+    this.recent.addEventListener('click', () => {
+        this.ctrl.loadRecentBooks();
+    });
+    this.popular.addEventListener('click', () => {
+        this.ctrl.loadPopularBooks();
+    });
+    this.free.addEventListener('click', () => {
+        this.ctrl.loadFreeBooks();
+    });
+    this.search.addEventListener('keyup',(e) => {
+        this.ctrl.searchBooks(e.target.value);
+    });
+    this.addBook.addEventListener('click', () => {
+        document.getElementById('add-book-form').classList.remove('hidden');
+    });
+    this.cancel.addEventListener ('click', () => {
+        document.getElementById('add-book-form').classList.add('hidden');
+    })
 }
 View.prototype.renderBooks = function renderBooks(books) {
+    this.clear();
     books.map((elem) => {
         const book = document.createElement('div');
         const title = document.createElement('div');
         const image = document.createElement('img');
         const author = document.createElement('div');
-        const rating = document.createElement('div');
         image.src=elem.src;
         image.classList.add('book-img');
         title.textContent = elem.title;
         title.classList.add('title');
         author.textContent = 'by ' + elem.author;
         author.classList.add('author');
-        rating.textContent = elem.rating;
         book.append(image);
         book.append(title);
         book.append(author);
-        book.append(rating);
+        for (var i=0; i<elem.rating; i++) {
+            var rating = document.createElement('span');
+            rating.classList.add('fa');
+            rating.classList.add('fa-star');
+            book.append(rating);
+        }
+        for (i=elem.rating; i<5; i++) {
+            rating = document.createElement('span');
+            rating.classList.add('fa');
+            rating.classList.add('fa-star-o');
+            book.append(rating);
+        }
         book.classList.add('book');
         this.div.append(book);
     });
-View.prototype.clear = function clear(){
+}
+
+
+View.prototype.clear = function clear() {
     while (this.div.childNodes.length !== 0) {
-        this.div.removeChild(this.div.childNodes[0]);
+        this.div.removeChild(this.div.firstChild);
     }
-}
-View.prototype.renderCategories = function renderCategories(books) {
-    var components=[];
-    switch (event.target.id) {
-        case 'popular':{
-            for (var i=0; i<books.length; i++){
-                if (books[i].rating>=4){
-                    components.push(books[i])
-                }
-            }
-            break;
-        }
-        case 'all-books':{
-            for (var i=0; i<books.length; i++){
-                components.push(books[i])
-            }
-        }
-        case 'most-recent':{
-            for (var i=0; i<books.length; i++){
-                if (books[i].created_at.slice(0,4) === ""+new Date().getFullYear()){
-                    components.push(books[i])
-                }
-            }
-        }
-        case 'free':{
-            for (var i=0; i<books.length; i++){
-                if (books[i].price==0){
-                    components.push(books[i])
-                }
-            }
-        }
-    }
-    this.clear();
-    this.renderBooks(components);
-}
 }

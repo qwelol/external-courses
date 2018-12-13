@@ -35,7 +35,7 @@
  <div class="main-page">
   <aside class="sidebar" >
    <div class="add-book-panel">
-    <a>
+    <a id="add-book-btn">
      <span class="fa fa-plus"></span>
      <span class="btn-text">add a book</span>
     </a>
@@ -127,7 +127,8 @@
      <span id="free">Free books</span>
     </div>
     <div class="search">
-     <input type="search" placeholder="Enter Keywords" class="search">
+     <input type="search" placeholder="Enter Keywords" id="search">
+     <span class="fa fa-search"></span>
     </div>
    </div>
    <hr class="main-divider">
@@ -140,6 +141,38 @@
    <span class="fa fa-gear"></span>
   </div>
  </footer>
+ <div class="hidden" id="add-book-form">
+  <form>
+   <fieldset>
+    <label>
+     <span>Title </span>
+     <input type="text" name="title" required>
+    </label>
+    <label>
+     <span>Author </span>
+     <input type="text" name="author" required>
+    </label>
+    <label>
+     <span>Description </span>
+     <input type="text" name="description">
+    </label>
+    <label>
+     <span>Keywords </span>
+     <input type="text" name="keywords">
+    </label>
+    <label>
+     <span>Price </span>
+     <input type="number" name="price" required>
+    </label>
+    <label>
+     <span>Created at </span>
+     <input type="date" name="created_at" required>
+    </label>
+    <button type="submit" name="submit"> Add </button>
+    <button type="reset" name="cancel" id="cancel"> Cancel </button>
+   </fieldset>
+  </form>
+ </div>
  <script src="/script/Controller.js"></script>
  <script src="/script/Model.js"></script>
  <script src="/script/View.js"></script>

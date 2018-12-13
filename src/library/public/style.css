@@ -273,6 +273,9 @@ main{
  color: white;
 }
 .search{
+ position: relative;
+}
+#search{
  width: 300px;
  min-width: 150px;
  height: 32px;
@@ -281,12 +284,20 @@ main{
  border: 1px solid rgba(140,151,178,0.4);
  outline: none;
 }
-.search::placeholder{
+#search::placeholder{
  font-size: 13px;
  line-height: 26px;
  color: #8c97b2;
  text-align: center;
 
+}
+.fa-search{
+ position: absolute;
+ right: 15px;
+ top: 7px;
+ font-size: 14px;
+ line-height: 26px;
+ color: #8c97b2;
 }
 #books{
  position: fixed;
@@ -318,6 +329,14 @@ main{
  color: #6f7d95;
  font-family: "Proxima Nova", sans-serif;
 }
+.book .fa-star{
+ font-size: 20px;
+ color:yellow;
+}
+.book .fa-star-o{
+ font-size: 20px;
+ color: yellow;
+}
 .page-footer{
  max-height: 46px;
  position: fixed;
@@ -344,4 +363,30 @@ main{
 }
 .footer-panel span:hover{
  background-color: #15a4fa;
+}
+#add-book-form{
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ background-color:#181e2c;
+ margin: auto;
+}
+#add-book-form span{
+ display: inline-block;
+ width: 100px;
+ font-size: 14px;
+ line-height: 26px;
+ color: #8c97b2;
+ font-family: "Proxima Nova",sans-serif;
+}
+#add-book-form label{
+ display: block;
+ margin: 15px 0;
+}
+#add-book-form fieldset{
+ border: 0;
+}
+.hidden{
+ display: none;
 }
