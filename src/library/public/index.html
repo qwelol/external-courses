@@ -141,7 +141,7 @@
    <span class="fa fa-gear"></span>
   </div>
  </footer>
- <div class="hidden" id="add-book-form">
+ <div class="hidden popup-form" id="add-book-form">
   <form>
    <fieldset>
     <label>
@@ -169,7 +169,46 @@
      <input type="date" name="created_at" required>
     </label>
     <button type="submit" name="submit"> Add </button>
-    <button type="reset" name="cancel" id="cancel"> Cancel </button>
+    <button type="reset" name="cancel" class="cancel"> Cancel </button>
+   </fieldset>
+  </form>
+ </div>
+ <div id="book-info" class="hidden popup-form long">
+  <!--id, title, src, author, description, keywords, rating, price,created_at -->
+  <img id="info-img">
+  <form>
+   <fieldset>
+    <label>
+     <span>Title </span>
+     <input type="text" name="info-title" required>
+    </label>
+    <label>
+     <span>Author </span>
+     <input type="text" name="info-author" required>
+    </label>
+    <label>
+     <span>Description </span>
+     <input type="text" name="info-description">
+    </label>
+    <label>
+     <span>Keywords </span>
+     <input type="text" name="info-keywords">
+    </label>
+     <label>
+      <span>Rating </span>
+      <input type="text" name="info-rating" disabled>
+     </label>
+     <label>
+     <span>Price </span>
+     <input type="number" name="info-price" required>
+    </label>
+    <label>
+     <span>Created at </span>
+     <input type="date" name="info-created_at" required>
+    </label>
+    <button type="submit" name="info-update"> Update </button>
+    <button type="button" name="info-delete"> Delete </button>
+    <button type="reset" name="cancel" class="cancel"> Cancel </button>
    </fieldset>
   </form>
  </div>

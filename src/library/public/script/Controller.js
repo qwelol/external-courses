@@ -18,3 +18,6 @@ Controller.prototype.loadFreeBooks = function() {
 Controller.prototype.searchBooks = function(text) {
     this.model.searchBooks(text);
 }
+Controller.prototype.loadBook = function (id) {
+    this.model.loadBook(id);
+}

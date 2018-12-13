@@ -364,15 +364,17 @@ main{
 .footer-panel span:hover{
  background-color: #15a4fa;
 }
-#add-book-form{
+.popup-form{
  position: absolute;
  top: 50%;
  left: 50%;
+ display: flex;
+ align-items: center;
+ border-radius: 5px;
  transform: translate(-50%, -50%);
  background-color:#181e2c;
- margin: auto;
 }
-#add-book-form span{
+.popup-form span{
  display: inline-block;
  width: 100px;
  font-size: 14px;
@@ -380,12 +382,20 @@ main{
  color: #8c97b2;
  font-family: "Proxima Nova",sans-serif;
 }
-#add-book-form label{
+.popup-form label{
  display: block;
  margin: 15px 0;
 }
-#add-book-form fieldset{
+.popup-form fieldset{
  border: 0;
+}
+.popup-form img{
+ width: 200px;
+ height: 275px;
+ margin: 5px;
+}
+.long{
+ min-width: 550px;
 }
 .hidden{
  display: none;

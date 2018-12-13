@@ -1,7 +1,9 @@
 // тут обрабатываются данные
 function Model() {
     this.books = null;
+    this.currentBook = null;
     this.onBooksLoaded = new EventEmitter();
+    this.onBookLoaded = new EventEmitter();
 }
 Model.prototype.loadBooks = function () {
     var that = this;
@@ -73,4 +75,17 @@ Model.prototype.searchBooks = function (text) {
         /*eslint-enable */
     },700)
 
+}
+Model.prototype.loadBook = function (id) {
+    var that = this;
+    /*eslint-disable */
+    fetch('/api/books/'+id).then(function (res) {
+        if (res.ok) {
+            return res.json();
+        }
+    }).then(function (data) {
+        that.currentBook = (data.payload);
+        that.onBookLoaded.notify(that.currentBook);
+    });
+    /*eslint-enable */
 }
