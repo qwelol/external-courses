@@ -103,7 +103,6 @@ a, a:visited{
 }
 .add-book-panel{
  display: flex;
- justify-content: center;
  align-items: center;
  min-width: 200px;
  min-height: 100px;

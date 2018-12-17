@@ -1,3 +1,4 @@
+//посредник между обработкой и представлением данных
 function Controller() {
     this.model = new Model();
     this.view = new View(this.model, this)
@@ -20,4 +21,13 @@ Controller.prototype.searchBooks = function(text) {
 }
 Controller.prototype.loadBook = function (id) {
     this.model.loadBook(id);
+}
+Controller.prototype.addBook = function (book) {
+    this.model.addBook(book);
+}
+Controller.prototype.updateBook = function (book,id) {
+    this.model.updateBook(book,id);
+}
+Controller.prototype.deleteBook = function (id) {
+    this.model.deleteBook(id);
 }

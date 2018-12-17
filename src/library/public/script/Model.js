@@ -1,7 +1,6 @@
 // тут обрабатываются данные
 function Model() {
     this.books = null;
-    this.currentBook = null;
     this.onBooksLoaded = new EventEmitter();
     this.onBookLoaded = new EventEmitter();
 }
@@ -84,8 +83,51 @@ Model.prototype.loadBook = function (id) {
             return res.json();
         }
     }).then(function (data) {
-        that.currentBook = (data.payload);
-        that.onBookLoaded.notify(that.currentBook);
+        that.onBookLoaded.notify(data.payload);
     });
+    /*eslint-enable */
+}
+Model.prototype.addBook = function (book){
+    var that = this;
+    /*eslint-disable */
+    fetch('/api/books',{ method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(book)})
+        .then(function (res) {
+            if (res.ok){
+                return res.json();
+            }
+        }).then(function (data) {
+            that.books.push(data.payload);
+            that.onBooksLoaded.notify(that.books);
+    })
+    /*eslint-enable */
+}
+Model.prototype.updateBook = function (book,id) {
+    var that = this;
+    /*eslint-disable */
+    fetch('/api/books/'+id,{ method:'PUT', headers:{'content-type':'application/json'}, body: JSON.stringify(book)})
+        .then(function (res) {
+            if (res.ok){
+                return res.json();
+            }
+        }).then(function (data) {
+            const book = that.books.find((book) => book.id === data.payload.id);
+            Object.assign(book, data.payload);
+            that.onBooksLoaded.notify(that.books);
+        })
+    /*eslint-enable */
+}
+Model.prototype.deleteBook = function (id) {
+    var that = this;
+    /*eslint-disable */
+    fetch('/api/books/'+id,{ method:'DELETE'})
+        .then(function (res) {
+            if (res.ok){
+                return res.json();
+            }
+        }).then(function (data) {
+            const index = that.books.findIndex((book) => book.id === +data.payload.id);
+            that.books.splice(index,1);
+            that.onBooksLoaded.notify(that.books);
+        })
     /*eslint-enable */
 }

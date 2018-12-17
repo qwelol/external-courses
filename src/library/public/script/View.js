@@ -11,13 +11,46 @@ function View(model, controller) {
     this.addBook = document.getElementById('add-book-btn');
     this.cancel = document.getElementsByClassName('cancel');
     this.info = document.getElementById('book-info');
+    this.addBookForm = document.getElementById('add-book');
+    this.updateBookForm = document.getElementById('update-form');
+    this.deleteBtn = document.getElementsByName('info-delete')[0];
 }
 
 View.prototype.init = function () {
-    var that = this;
     //стрелочная форма позволяет не использовать that т.к сохраняет контекст
     this.model.onBooksLoaded.subscribe((books) => {
         this.renderBooks(books);
+    });
+    this.addBookForm.addEventListener('submit',(event) =>{
+        event.preventDefault();
+        var formData = new FormData(event.target);
+        var book={
+            title: formData.get('title'),
+            author:formData.get('author'),
+            description:formData.get('description'),
+            keywords:formData.get('keywords'),
+            price:formData.get('price'),
+            created_at:formData.get('created_at')
+        };
+        this.ctrl.addBook(book);
+        this.addBookForm.reset();
+        document.getElementById('add-book-form').classList.add('hidden');
+    });
+    this.updateBookForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        var formData = new FormData(event.target);
+        var book={
+            title: formData.get('info-title'),
+            author:formData.get('info-author'),
+            description:formData.get('info-description'),
+            keywords:formData.get('info-keywords'),
+            rating:formData.get('info-rating'),
+            price:formData.get('info-price'),
+            created_at:formData.get('info-created_at')
+        };
+        this.ctrl.updateBook(book,this.updateBookForm.dataset.id);
+        this.updateBookForm.reset();
+        document.getElementById('book-info').classList.add('hidden');
     });
     this.model.onBookLoaded.subscribe((book) => {
         this.renderBook(book);
@@ -40,6 +73,11 @@ View.prototype.init = function () {
     this.addBook.addEventListener('click', () => {
         document.getElementById('add-book-form').classList.remove('hidden');
     });
+    this.deleteBtn.addEventListener('click', ()=>{
+        this.ctrl.deleteBook(this.updateBookForm.dataset.id);
+        this.updateBookForm.reset();
+        document.getElementById('book-info').classList.add('hidden');
+    })
     for(var i=0;i<this.cancel.length;i++){
         this.cancel[i].addEventListener ('click', () => {
             var form = document.getElementsByClassName('popup-form');
@@ -86,7 +124,6 @@ View.prototype.renderBooks = function renderBooks(books) {
 }
 
 View.prototype.renderBook = function renderBook(book) {
-    // id, title, src, author, description, keywords, rating, price,created_at
     this.info.classList.remove('hidden');
     document.getElementById('info-img').src=book.src;
     document.getElementsByName('info-title')[0].value = book.title;
@@ -96,13 +133,15 @@ View.prototype.renderBook = function renderBook(book) {
     document.getElementsByName('info-rating')[0].value = book.rating;
     document.getElementsByName('info-price')[0].value = book.price;
     var d = new Date(book.created_at);
-    var month = d.getMonth();
+    var month = d.getMonth()+1;
     var day = d.getDate();
     var output = d.getFullYear() + "-"
         + (month<10 ? '0' : '') + month + '-'
         + (day<10 ? '0' : '') + day;
-    document.getElementsByName('info-created_at')[0].value = output;
-}
+    var date = document.getElementsByName('info-created_at')[0];
+    date.value = output;
+    this.updateBookForm.dataset.id=book.id;
+};
 
 View.prototype.clear = function clear() {
     while (this.div.childNodes.length !== 0) {

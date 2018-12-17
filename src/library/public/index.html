@@ -142,7 +142,7 @@
   </div>
  </footer>
  <div class="hidden popup-form" id="add-book-form">
-  <form>
+  <form id="add-book">
    <fieldset>
     <label>
      <span>Title </span>
@@ -174,9 +174,8 @@
   </form>
  </div>
  <div id="book-info" class="hidden popup-form long">
-  <!--id, title, src, author, description, keywords, rating, price,created_at -->
   <img id="info-img">
-  <form>
+  <form id="update-form">
    <fieldset>
     <label>
      <span>Title </span>
@@ -196,7 +195,7 @@
     </label>
      <label>
       <span>Rating </span>
-      <input type="text" name="info-rating" disabled>
+      <input type="number" name="info-rating" min="1" max="5">
      </label>
      <label>
      <span>Price </span>
