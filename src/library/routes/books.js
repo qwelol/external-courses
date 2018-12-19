@@ -56,7 +56,7 @@ router.post('/', (req,res) =>{
     const {body} = req;
     const {title, author, description, keywords,price, created_at} = body;
     ID++;
-    BOOKS.push({
+    const book ={
         id: ID,
         title:title,
         src:'img/book-cover.png',
@@ -66,8 +66,9 @@ router.post('/', (req,res) =>{
         rating:0,
         price:+price,
         created_at:new Date(created_at)
-    })
-    res.json({payload:BOOKS[ID-1]});
+    }
+    BOOKS.push(book)
+    res.json({payload:book});
 });
 router.put('/:id', (req,res) =>{
     const {body} = req;

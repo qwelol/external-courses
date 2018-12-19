@@ -23,31 +23,14 @@ View.prototype.init = function () {
     });
     this.addBookForm.addEventListener('submit',(event) =>{
         event.preventDefault();
-        var formData = new FormData(event.target);
-        var book={
-            title: formData.get('title'),
-            author:formData.get('author'),
-            description:formData.get('description'),
-            keywords:formData.get('keywords'),
-            price:formData.get('price'),
-            created_at:formData.get('created_at')
-        };
+        const book=this.convertData(event.target);
         this.ctrl.addBook(book);
         this.addBookForm.reset();
         document.getElementById('add-book-form').classList.add('hidden');
     });
     this.updateBookForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        var formData = new FormData(event.target);
-        var book={
-            title: formData.get('info-title'),
-            author:formData.get('info-author'),
-            description:formData.get('info-description'),
-            keywords:formData.get('info-keywords'),
-            rating:formData.get('info-rating'),
-            price:formData.get('info-price'),
-            created_at:formData.get('info-created_at')
-        };
+        const book=this.convertData(event.target);
         this.ctrl.updateBook(book,this.updateBookForm.dataset.id);
         this.updateBookForm.reset();
         document.getElementById('book-info').classList.add('hidden');
@@ -126,19 +109,19 @@ View.prototype.renderBooks = function renderBooks(books) {
 View.prototype.renderBook = function renderBook(book) {
     this.info.classList.remove('hidden');
     document.getElementById('info-img').src=book.src;
-    document.getElementsByName('info-title')[0].value = book.title;
-    document.getElementsByName('info-author')[0].value = book.author;
-    document.getElementsByName('info-description')[0].value = book.description;
-    document.getElementsByName('info-keywords')[0].value = book.keywords;
-    document.getElementsByName('info-rating')[0].value = book.rating;
-    document.getElementsByName('info-price')[0].value = book.price;
+    this.updateBookForm.elements.title.value = book.title;
+    this.updateBookForm.elements.author.value = book.author;
+    this.updateBookForm.elements.description.value = book.description;
+    this.updateBookForm.elements.keywords.value = book.keywords;
+    this.updateBookForm.elements.rating.value = book.rating;
+    this.updateBookForm.elements.price.value = book.price;
     var d = new Date(book.created_at);
     var month = d.getMonth()+1;
     var day = d.getDate();
     var output = d.getFullYear() + "-"
         + (month<10 ? '0' : '') + month + '-'
         + (day<10 ? '0' : '') + day;
-    var date = document.getElementsByName('info-created_at')[0];
+    var date = this.updateBookForm.elements.created_at;
     date.value = output;
     this.updateBookForm.dataset.id=book.id;
 };
@@ -147,4 +130,12 @@ View.prototype.clear = function clear() {
     while (this.div.childNodes.length !== 0) {
         this.div.removeChild(this.div.firstChild);
     }
+}
+View.prototype.convertData = function convertData(form){
+    var formData = new FormData(form);
+    var book={};
+    for(var pair of formData.entries()) {
+        book[pair[0]]=pair[1];
+    }
+    return book;
 }
