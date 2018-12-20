@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+ <link rel="stylesheet" type="text/css" href="style.css" />
+ <link rel="stylesheet" href="/fonts/ProximaNova.css" />
+ <link rel="stylesheet" href="/fonts/FontAwesome.min.css">
+ <title>library</title>
+</head>
+<body>
+ <header class="header">
+  <div class="panel">
+   <ul class="menu">
+	<li class="menu-item">
+	 <a href=# class="menu-link">
+	  Help Center
+	 </a>
+	</li>
+    <li class="small-circle"></li>
+	<li class="menu-item">
+	 <a href=# class="menu-link">
+	  Our Support
+	 </a>
+	</li>
+	<li class="menu-item">
+	 <a href=# class="menu-link">
+	  John Doe
+	 </a>
+     <span class="fa fa-chevron-circle-down"></span>
+	</li>
+   </ul>
+  </div>
+ </header>
+
+ <div class="main-page">
+  <aside class="sidebar" >
+   <div class="add-book-panel">
+    <a id="add-book-btn">
+     <span class="fa fa-plus"></span>
+     <span class="btn-text">add a book</span>
+    </a>
+   </div>
+   <hr class="nav-divider">
+   <div class="main-nav">
+    <ul class="nav-menu">
+     <li class="menu-item">
+      <span class="fa fa-book"></span>
+      <a href=# class="menu-link">
+       Now Reading
+      </a>
+     </li>
+     <li class="menu-item">
+      <span class="fa fa-globe"></span>
+      <a href=# class="menu-link">
+       Browse
+      </a>
+     </li>
+     <li class="menu-item">
+      <span class="fa fa-shopping-cart"></span>
+      <a href=# class="menu-link">
+       Buy Books
+      </a>
+     <li class="menu-item">
+      <span class="fa fa-star"></span>
+      <a href=# class="menu-link">
+       Favourite Books
+      </a>
+     </li>
+     <li class="menu-item">
+      <span class="fa fa-th-list"></span>
+      <a href=# class="menu-link">
+       Wishlist
+      </a>
+     </li>
+     <li class="menu-item">
+      <span class="fa fa-clock-o"></span>
+      <a href=# class="menu-link">
+       History
+      </a>
+     </li>
+    </ul>
+    <hr class="nav-divider">
+    <ul class="nav-menu personal-categories">
+     <li class="menu-item">
+      <a href=# class="menu-link">
+       Must Read Titles
+      </a>
+     </li>
+     <li class="menu-item">
+      <a href=# class="menu-link">
+       Best Of List
+      </a>
+     </li>
+     <li class="menu-item">
+      <a href=# class="menu-link">
+       Classic Novels
+      </a>
+     <li class="menu-item">
+      <a href=# class="menu-link">
+       Non Fiction
+      </a>
+     </li>
+    </ul>
+    <hr class="nav-divider">
+    <ul class="history-list">
+     <li>
+      <span class="fa fa-clock-o"></span>
+      <span class="hist-text">You added <b>Fight Club</b> by <b>Chuck Palahniuk</b> to your <b>Must Read Titles.</b></span>
+      <span class="time">24 minutes ago</span>
+     </li>
+     <li>
+      <span class="fa fa-clock-o"></span>
+      <span class="hist-text">You added <b>The Trial</b> by <b>Franz Kafka</b> to your <b>Must Read Titles.</b>  </span>
+      <span class="time">48 minutes ago</span>
+     </li>
+    </ul>
+   </div>
+  </aside>
+  <main>
+   <div class="main-header"> <span> Browse Available Books </span></div>
+   <hr class="main-divider">
+   <div class="filter-panel">
+    <div class="filter">
+     <span id="all-books">All books</span>
+     <span id="most-recent">Most Recent</span>
+     <span id="popular">Most Popular</span>
+     <span id="free">Free books</span>
+    </div>
+    <div class="search">
+     <input type="search" placeholder="Enter Keywords" id="search">
+     <span class="fa fa-search"></span>
+    </div>
+   </div>
+   <hr class="main-divider">
+   <div id="books"></div>
+  </main>
+ </div>
+ <footer class="page-footer">
+  <div class="footer-panel">
+   <span class="fa fa-question-circle"></span>
+   <span class="fa fa-gear"></span>
+  </div>
+ </footer>
+ <div class="hidden popup-form" id="add-book-form">
+  <form id="add-book">
+   <fieldset>
+    <label>
+     <span>Title </span>
+     <input type="text" name="title" required>
+    </label>
+    <label>
+     <span>Author </span>
+     <input type="text" name="author" required>
+    </label>
+    <label>
+     <span>Description </span>
+     <input type="text" name="description">
+    </label>
+    <label>
+     <span>Keywords </span>
+     <input type="text" name="keywords">
+    </label>
+    <label>
+     <span>Price </span>
+     <input type="number" name="price" required>
+    </label>
+    <label>
+     <span>Created at </span>
+     <input type="date" name="created_at" required>
+    </label>
+    <button type="submit" name="submit"> Add </button>
+    <button type="reset" name="cancel" class="cancel"> Cancel </button>
+   </fieldset>
+  </form>
+ </div>
+ <div id="book-info" class="hidden popup-form long">
+  <img id="info-img">
+  <form id="update-form">
+   <fieldset>
+    <label>
+     <span>Title </span>
+     <input type="text" name="title" required>
+    </label>
+    <label>
+     <span>Author </span>
+     <input type="text" name="author" required>
+    </label>
+    <label>
+     <span>Description </span>
+     <input type="text" name="description">
+    </label>
+    <label>
+     <span>Keywords </span>
+     <input type="text" name="keywords">
+    </label>
+     <label>
+      <span>Rating </span>
+      <input type="number" name="rating" min="1" max="5">
+     </label>
+     <label>
+     <span>Price </span>
+     <input type="number" name="price" required>
+    </label>
+    <label>
+     <span>Created at </span>
+     <input type="date" name="created_at" required>
+    </label>
+    <button type="submit" name="info-update"> Update </button>
+    <button type="button" name="info-delete"> Delete </button>
+    <button type="reset" name="cancel" class="cancel"> Cancel </button>
+   </fieldset>
+  </form>
+ </div>
+ <script src="/script/Controller.js"></script>
+ <script src="/script/Model.js"></script>
+ <script src="/script/View.js"></script>
+ <script src="/script/EventEmitter.js"></script>
+ <script src="/script/core.js"></script>
+</body>
+</html>
